@@ -7,6 +7,10 @@ const mongoose = require('mongoose');
 const app = express();
 const bcrypt = require('bcrypt');
 const session = require('express-session');
+const dotenv = require('dotenv');
+
+dotenv.config();
+
 
 const Notice = require('./models/notice');
 const Complaints = require('./models/complaint');
@@ -14,7 +18,8 @@ const User = require('./models/user');
 const Menu = require('./models/menu');
 const methodOverride = require('method-override');
 
-mongoose.connect('mongodb://0.0.0.0:27017/Mess');
+const MONGO_URL = process.env.MONGO_URL || "mongodb://0.0.0.0:27017/Mess";
+mongoose.connect(MONGO_URL);
 var db = mongoose.connection;
 db.on('error', console.log.bind(console, "connection error"));
 db.once('open', function(callback) {
