@@ -1,8 +1,14 @@
+const dotenv = require('dotenv');
+
+dotenv.config();
+
 const mongoose = require('mongoose');
 
 const Menu = require('./models/menu')
 
-mongoose.connect('mongodb://0.0.0.0:27017/Mess')
+const MONGO_URL = process.env.MONGO_URL || "mongodb://0.0.0.0:27017/Mess";
+
+mongoose.connect(MONGO_URL)
     .then( () => {
         console.log("Database Connection Successful")
     })
