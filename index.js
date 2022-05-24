@@ -57,7 +57,7 @@ app.get('/', async (req,res) => {
 });
 
 app.get("/home", async (req,res) => {
-    var dt = new Date;
+    var dt = new Date(new Date().toLocaleString("en-US", {timeZone: "Asia/Kolkata"}));
     var d,k;
 
     var dy = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
@@ -261,5 +261,5 @@ app.post('/login', async (req, res) => {
 const port = process.env.PORT || 3000;
 
 app.listen(port , function() {
-    console.log(`server listening at port 3000 ${port} `);
+    console.log(`server listening at port ${port} `);
 });
